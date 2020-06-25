@@ -48,6 +48,7 @@ SWEP.Secondary.DefaultClip = -1
 SWEP.Secondary.Automatic = true
 SWEP.Secondary.Ammo = "none"
 
+-- Placeholder for debugging
 SWEP.IronSightsPos = Vector(15, 0, 0)
 SWEP.IronSightsAng = Vector(0, 0, 0)
 
