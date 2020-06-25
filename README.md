@@ -1,2 +1,4 @@
 # JAKE's Weapon Base
-Broken as of now. Looking for improvements, planning to fix a lot.
+Garry's Mod weapon base for my own research.
+
+Use if you want, just don't redistribute privately without my credit.
