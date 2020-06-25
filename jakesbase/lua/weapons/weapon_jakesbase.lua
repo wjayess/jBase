@@ -69,9 +69,9 @@ function SWEP:PrimaryAttack()
 end
 
 function SWEP:SecondaryAttack()
-    if not self.IsAiming then
-        self.IsAiming = true
-    end
+    if self.IsAiming then return end
+
+    self.IsAiming = true
 end
 
 function SWEP:GetViewModelPosition(eyePos, eyeAng)
