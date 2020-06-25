@@ -75,28 +75,28 @@ function SWEP:SecondaryAttack()
 end
 
 function SWEP:GetViewModelPosition(eyePos, eyeAng)
-    if self.IsAiming then
-        local mul = 1.0
-        local offset = self.IronSightsPos
+    if self.IsAiming then return end
 
-        if (self.IronSightsAng) then
-            eyeAng = eyeAng * 1
+    local mul = 1.0
+    local offset = self.IronSightsPos
 
-            eyeAng:RotateAroundAxis(eyeAng:Right(), self.IronSightsAng.x * mul)
-            eyeAng:RotateAroundAxis(eyeAng:Up(), self.IronSightsAng.y * mul)
-            eyeAng:RotateAroundAxis(eyeAng:Forward(), self.IronSightsAng.z * mul)
-        end
+    if (self.IronSightsAng) then
+        eyeAng = eyeAng * 1
 
-        local right = eyeAng:Right()
-        local up = eyeAng:Up()
-        local forward = eyeAng:Forward()
-
-        eyePos = eyePos + offset.x * right * mul
-        eyePos = eyePos + offset.y * forward * mul
-        eyePos = eyePos + offset.z * up * mul
-
-        return eyePos, eyeAng
+        eyeAng:RotateAroundAxis(eyeAng:Right(), self.IronSightsAng.x * mul)
+        eyeAng:RotateAroundAxis(eyeAng:Up(), self.IronSightsAng.y * mul)
+        eyeAng:RotateAroundAxis(eyeAng:Forward(), self.IronSightsAng.z * mul)
     end
+
+    local right = eyeAng:Right()
+    local up = eyeAng:Up()
+    local forward = eyeAng:Forward()
+
+    eyePos = eyePos + offset.x * right * mul
+    eyePos = eyePos + offset.y * forward * mul
+    eyePos = eyePos + offset.z * up * mul
+
+    return eyePos, eyeAng
 end
 
 function SWEP:Reload()
