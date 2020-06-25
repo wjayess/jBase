@@ -73,15 +73,7 @@ function SWEP:SecondaryAttack()
         self.IsAiming = true
     end
 end
---[[
---
---
---
---                                      NNNNNNNNNNNNNNNNEEEEEEEEEEEEEEEEEEEEEDDDDDDDDDDDDDSSSSSSSSSSSSS FFFFFFFFFFIIIIIIIIIIIXXXXXXXXXXXXXXXXX
---
---
---
---]]
+
 function SWEP:GetViewModelPosition(eyePos, eyeAng)
     if self.IsAiming then
         local mul = 1.0
