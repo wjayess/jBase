@@ -75,7 +75,7 @@ function SWEP:SecondaryAttack()
 end
 
 function SWEP:GetViewModelPosition(eyePos, eyeAng)
-    if self.IsAiming then return end
+    if not self.IsAiming then return end
 
     local mul = 1.0
     local offset = self.IronSightsPos
