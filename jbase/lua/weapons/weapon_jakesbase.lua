@@ -1,5 +1,5 @@
 if CLIENT then
-	SWEP.UseHands = true
+    SWEP.UseHands = true
 
     SWEP.DrawAmmo = true
     SWEP.DrawCrosshair = true
@@ -51,82 +51,82 @@ SWEP.IronSightsPos = Vector(-6.6, 0, 2)
 SWEP.IronSightsAng = Vector(2.5, 0, 0)
 
 function SWEP:SetNormalVM()
-	if CLIENT then
-		function self:GetViewModelPosition(eyePos, eyeAng)
-		    local mul = 1.0
+    if CLIENT then
+        function self:GetViewModelPosition(eyePos, eyeAng)
+            local mul = 1.0
 
-	        eyeAng = eyeAng * 1
+            eyeAng = eyeAng * 1
 
-	        eyeAng:RotateAroundAxis(eyeAng:Right(), 0 * mul)
-	        eyeAng:RotateAroundAxis(eyeAng:Up(), 0 * mul)
-	        eyeAng:RotateAroundAxis(eyeAng:Forward(), 0 * mul)
+            eyeAng:RotateAroundAxis(eyeAng:Right(), 0 * mul)
+            eyeAng:RotateAroundAxis(eyeAng:Up(), 0 * mul)
+            eyeAng:RotateAroundAxis(eyeAng:Forward(), 0 * mul)
 
-		    local right = eyeAng:Right()
-		    local up = eyeAng:Up()
-		    local forward = eyeAng:Forward()
+            local right = eyeAng:Right()
+            local up = eyeAng:Up()
+            local forward = eyeAng:Forward()
 
-		    eyePos = eyePos + 0 * right * mul
-		    eyePos = eyePos + 0 * forward * mul
-		    eyePos = eyePos + 0 * up * mul
+            eyePos = eyePos + 0 * right * mul
+            eyePos = eyePos + 0 * forward * mul
+            eyePos = eyePos + 0 * up * mul
 
-		    return eyePos, eyeAng
-		end
+            return eyePos, eyeAng
+        end
 
-		function self:TranslateFOV(fov)
-			return fov
-		end
-	end
+        function self:TranslateFOV(fov)
+            return fov
+        end
+    end
 
-	self.Primary.Cone = self.Primary.RegCone
+    self.Primary.Cone = self.Primary.RegCone
 end
 
 function SWEP:SetAimingVM()
-	if CLIENT then
-		function self:GetViewModelPosition(eyePos, eyeAng)
-		    local mul = 1.0
-		    local offset = self.IronSightsPos
+    if CLIENT then
+        function self:GetViewModelPosition(eyePos, eyeAng)
+            local mul = 1.0
+            local offset = self.IronSightsPos
 
-		    if (self.IronSightsAng) then
-		        eyeAng = eyeAng * 1
+            if (self.IronSightsAng) then
+                eyeAng = eyeAng * 1
 
-		        eyeAng:RotateAroundAxis(eyeAng:Right(), self.IronSightsAng.x * mul)
-		        eyeAng:RotateAroundAxis(eyeAng:Up(), self.IronSightsAng.y * mul)
-		        eyeAng:RotateAroundAxis(eyeAng:Forward(), self.IronSightsAng.z * mul)
-		    end
+                eyeAng:RotateAroundAxis(eyeAng:Right(), self.IronSightsAng.x * mul)
+                eyeAng:RotateAroundAxis(eyeAng:Up(), self.IronSightsAng.y * mul)
+                eyeAng:RotateAroundAxis(eyeAng:Forward(), self.IronSightsAng.z * mul)
+            end
 
-		    local right = eyeAng:Right()
-		    local up = eyeAng:Up()
-		    local forward = eyeAng:Forward()
+            local right = eyeAng:Right()
+            local up = eyeAng:Up()
+            local forward = eyeAng:Forward()
 
-		    eyePos = eyePos + offset.x * right * mul
-		    eyePos = eyePos + offset.y * forward * mul
-		    eyePos = eyePos + offset.z * up * mul
+            eyePos = eyePos + offset.x * right * mul
+            eyePos = eyePos + offset.y * forward * mul
+            eyePos = eyePos + offset.z * up * mul
 
-		    return eyePos, eyeAng
-		end
+            return eyePos, eyeAng
+        end
 
-		function self:TranslateFOV(fov)
-			return fov - 30
-		end
-	end
+        function self:TranslateFOV(fov)
+            return fov - 30
+        end
+    end
 
-	self.Primary.Cone = self.Primary.AimingCone
+    self.Primary.Cone = self.Primary.AimingCone
 end
 
 function SWEP:Think()
-	self:SetNormalVM()
+    self:SetNormalVM()
 end
 
 function SWEP:Initialize()
-	self:SetHoldType(self.HoldType)
+    self:SetHoldType(self.HoldType)
 end
 
 function SWEP:PrimaryAttack()
     if not self:CanPrimaryAttack() then return end
 
     if CLIENT then
-	    self.Weapon:EmitSound(self.Primary.Sound)
-	end
+        self.Weapon:EmitSound(self.Primary.Sound)
+    end
 
     self:ShootBullet(self.Primary.Damage, self.Primary.NumShots, self.Primary.Cone)
     self:TakePrimaryAmmo(1)
@@ -135,7 +135,7 @@ function SWEP:PrimaryAttack()
 end
 
 function SWEP:SecondaryAttack()
-	self:SetAimingVM()
+    self:SetAimingVM()
 end
 
 function SWEP:Reload()
